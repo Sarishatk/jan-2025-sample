@@ -8,3 +8,10 @@ class registrationForm(forms.ModelForm):
         model = User
 
         fields = ["username","password","email"]
+
+
+class LoginForm(forms.  Form):
+
+    username = forms.CharField(max_length=100)
+
+    password = forms.CharField()
