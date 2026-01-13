@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from userapi.serializer import registerSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 from rest_framework.authentication import BasicAuthentication,TokenAuthentication
 from rest_framework.permissions import AllowAny,IsAuthenticated
 # Create your views here.
@@ -29,13 +30,15 @@ class loginapi(APIView):
 
     authentication_classes = [BasicAuthentication]
 
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
 
     def post(self, request):
 
         user = request.user
 
-        return Response({"message":"login successfully"})
+        token,created = Token.objects.get_or_create(user=user)
+
+        return Response({"message":"login success","token":token.key},status=status.HTTP_200_OK)
 
 
     
