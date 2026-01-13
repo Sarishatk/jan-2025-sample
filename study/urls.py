@@ -20,6 +20,6 @@ from UserApp.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register',registerview.as_view()),
+    path('register',registerview.as_view(),name='register'),
     path('login',LOginView.as_view())
 ]

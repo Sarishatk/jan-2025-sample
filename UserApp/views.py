@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import View
 from django.contrib.auth import authenticate,login
 from UserApp.forms import registrationForm,LoginForm
@@ -45,8 +45,8 @@ class LOginView(View):
 
             if user:
                 login(request, user)
-                form = registrationForm()
-                return render(request,"register.html",{'form':form})   
+                
+                return redirect('register')
 
             
 
