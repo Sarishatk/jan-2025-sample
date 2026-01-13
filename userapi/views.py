@@ -3,9 +3,14 @@ from rest_framework.views import APIView
 from userapi.serializer import registerSerializer
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.authentication import BasicAuthentication,TokenAuthentication
+from rest_framework.permissions import AllowAny,IsAuthenticated
 # Create your views here.
 
 class registerapi(APIView):
+
+    authentication_classes = [AllowAny]
+
 
     def post(self, request):
 
@@ -19,6 +24,20 @@ class registerapi(APIView):
             return Response(serilazer.data,status=status.HTTP_200_OK)
         
         return Response(serilazer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+class loginapi(APIView):
+
+    authentication_classes = [BasicAuthentication]
+
+    permission_classes=[AllowAny]
+
+    def post(self, request):
+
+        user = request.user
+
+        return Response({"message":"login successfully"})
+
+
     
 
 

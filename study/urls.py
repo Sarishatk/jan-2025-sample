@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register',registerview.as_view(),name='register'),
     path('login',LOginView.as_view()),
-    path('registerapi/',registerapi.as_view())
+    path('registerapi/',registerapi.as_view()),
+    path('login/',loginapi.as_view())
 ]
