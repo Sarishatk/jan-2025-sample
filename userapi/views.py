@@ -36,9 +36,9 @@ class loginapi(APIView):
 
         user = request.user
 
-        token,created = Token.objects.get_or_create(user=user)
+        token, created = Token.objects.get_or_create(user=user)
 
-        return Response({"message":"login success","token":token.key},status=status.HTTP_200_OK)
+        return Response({"message":"login successfull",'token' : token.key},status=status.HTTP_200_OK)
 
 
     
